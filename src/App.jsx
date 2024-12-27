@@ -79,9 +79,6 @@ function App() {
   let [value, setValue] = useState({ first: undefined, second: undefined });
 
   let [toggle, setToggle] = useState(false);
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
 
   useEffect(() => {
     if (value.first != value.second) {
@@ -113,11 +110,17 @@ function App() {
 
   return (
     <div className="border h-screen w-full">
-      <div className="border  w-full h-10">Memory game Moves {moves}</div>
+      <div className="border  w-full h-10 flex items-center justify-between p-3">
+        <span className="font-bold">
+          <b>M</b>emory game
+        </span>{" "}
+        <span>Moves {moves}</span>
+      </div>
       <div className="border grid md:grid-cols-6 grid-cols-4 m-auto md:grid-rows-6 grid-rows-10 gap-2 p-3 md:w-[70%]  h-screen">
         {data.map((ele) => {
           return (
             <Cards
+              key={ele.index}
               value={ele}
               setValue={setValue}
               setMoves={setMoves}
