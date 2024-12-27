@@ -1,74 +1,47 @@
 import { useEffect, useState } from "react";
 import Cards from "./Components/Cards";
+import apple from "/apple.jpg";
+import banana from "/banana.jpg";
+import coconut from "/coconut.jpg";
+import custardapple from "/custardapple.jpg";
+import grapes from "/grapes.jpg";
+import orange from "/orange.jpg";
+import papaya from "/papaya.jpg";
+import pineapple from "/pineaaple.jpg";
+import purplegrapes from "/purplegrapes.jpg";
+import watermelon from "/watermelon.jpg";
+import straw from "/straw.jpg";
+import pear from "/pear.jpg";
+import dragon from "/dragon.jpg";
 
 function App() {
   let [data, setData] = useState([
-    { index: 2, value: 11, show: false, done: false, image: "/apple.jpg" },
-    { index: 1, value: 10, show: false, done: false, image: "/banana.jpg" },
-    { index: 3, value: 12, show: false, done: false, image: "/coconut.jpg" },
-    {
-      index: 4,
-      value: 13,
-      show: false,
-      done: false,
-      image: "/custardapple.jpg",
-    },
-    { index: 5, value: 14, show: false, done: false, image: "/grapes.jpg" },
-    { index: 6, value: 15, show: false, done: false, image: "/orange.jpg" },
-    { index: 7, value: 16, show: false, done: false, image: "/papaya.jpg" },
-    { index: 8, value: 17, show: false, done: false, image: "/pineaaple.jpg" },
-    {
-      index: 9,
-      value: 18,
-      show: false,
-      done: false,
-      image: "/purplegrapes.jpg",
-    },
-    {
-      index: 10,
-      value: 19,
-      show: false,
-      done: false,
-      image: "/watermelon.jpg",
-    },
-    { index: 11, value: 11, show: false, done: false, image: "/apple.jpg" },
-    { index: 12, value: 10, show: false, done: false, image: "/banana.jpg" },
-    { index: 13, value: 12, show: false, done: false, image: "/coconut.jpg" },
-    {
-      index: 14,
-      value: 13,
-      show: false,
-      done: false,
-      image: "/custardapple.jpg",
-    },
-    { index: 15, value: 14, show: false, done: false, image: "/grapes.jpg" },
-    { index: 16, value: 15, show: false, done: false, image: "/orange.jpg" },
-    { index: 17, value: 16, show: false, done: false, image: "/papaya.jpg" },
-    { index: 18, value: 17, show: false, done: false, image: "/pineaaple.jpg" },
-    {
-      index: 19,
-      value: 18,
-      show: false,
-      done: false,
-      image: "/purplegrapes.jpg",
-    },
-    {
-      index: 20,
-      value: 19,
-      show: false,
-      done: false,
-      image: "/watermelon.jpg",
-    },
-    { index: 21, value: 16, show: false, done: false, image: "/papaya.jpg" },
-    { index: 22, value: 17, show: false, done: false, image: "/pineaaple.jpg" },
-    { index: 23, value: 16, show: false, done: false, image: "/papaya.jpg" },
-    { index: 24, value: 17, show: false, done: false, image: "/pineaaple.jpg" },
-    { index: 25, value: 21, show: false, done: false, image: "/straw.jpg" },
-    { index: 26, value: 21, show: false, done: false, image: "/straw.jpg" },
-    { index: 27, value: 22, show: false, done: false, image: "/pear.jpg" },
-    { index: 28, value: 22, show: false, done: false, image: "/pear.jpg" },
-    { index: 29, value: 23, show: false, done: false, image: "/dragon.jpg" },
-    { index: 30, value: 23, show: false, done: false, image: "/dragon.jpg" },
+    { index: 1, value: 10, show: false, done: false, image: banana },
+    { index: 2, value: 11, show: false, done: false, image: apple },
+    { index: 3, value: 12, show: false, done: false, image: coconut },
+    { index: 4, value: 13, show: false, done: false, image: custardapple },
+    { index: 5, value: 14, show: false, done: false, image: grapes },
+    { index: 6, value: 15, show: false, done: false, image: orange },
+    { index: 7, value: 16, show: false, done: false, image: papaya },
+    { index: 8, value: 17, show: false, done: false, image: pineapple },
+    { index: 9, value: 18, show: false, done: false, image: purplegrapes },
+    { index: 10, value: 19, show: false, done: false, image: watermelon },
+    { index: 11, value: 10, show: false, done: false, image: banana },
+    { index: 12, value: 11, show: false, done: false, image: apple },
+    { index: 13, value: 12, show: false, done: false, image: coconut },
+    { index: 14, value: 13, show: false, done: false, image: custardapple },
+    { index: 15, value: 14, show: false, done: false, image: grapes },
+    { index: 16, value: 15, show: false, done: false, image: orange },
+    { index: 17, value: 16, show: false, done: false, image: papaya },
+    { index: 18, value: 17, show: false, done: false, image: pineapple },
+    { index: 19, value: 18, show: false, done: false, image: purplegrapes },
+    { index: 20, value: 19, show: false, done: false, image: watermelon },
+    { index: 21, value: 20, show: false, done: false, image: straw },
+    { index: 22, value: 20, show: false, done: false, image: straw },
+    { index: 23, value: 21, show: false, done: false, image: pear },
+    { index: 24, value: 21, show: false, done: false, image: pear },
+    { index: 25, value: 22, show: false, done: false, image: dragon },
+    { index: 26, value: 22, show: false, done: false, image: dragon },
   ]);
 
   useEffect(() => {
