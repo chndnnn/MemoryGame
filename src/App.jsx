@@ -117,7 +117,7 @@ function App() {
           Moves {moves}
         </span>
       </div>
-      <div className="  w-full h-10 gap-5 flex items-center p-3">
+      <div className="  w-full h-10 gap-5 flex justify-between md:justify-start items-center p-3">
         <span className="font-bold">
           <b>H</b>ighest Score
         </span>
