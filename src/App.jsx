@@ -13,6 +13,10 @@ import watermelon from "/watermelon.jpg";
 import straw from "/straw.jpg";
 import pear from "/pear.jpg";
 import dragon from "/dragon.jpg";
+import axios from "axios";
+import Popup from "./Components/Popup";
+import { CgProfile } from "react-icons/cg";
+import { IoMoveSharp } from "react-icons/io5";
 
 function App() {
   let [data, setData] = useState([
@@ -42,16 +46,21 @@ function App() {
     { index: 24, value: 21, show: false, done: false, image: pear },
     { index: 25, value: 22, show: false, done: false, image: dragon },
     { index: 26, value: 22, show: false, done: false, image: dragon },
+    { index: 27, value: 22, show: false, done: false, image: dragon },
+    { index: 28, value: 22, show: false, done: false, image: dragon },
   ]);
-
-  useEffect(() => {
-    setData((prevData) => [...prevData].sort(() => Math.random() - 0.5));
-  }, []);
 
   let [moves, setMoves] = useState(0);
   let [value, setValue] = useState({ first: undefined, second: undefined });
-
+  let [gameOver, setGameOver] = useState(false);
   let [toggle, setToggle] = useState(false);
+  let [highscore, setHighestScore] = useState();
+  let [popup, showup] = useState();
+
+  useEffect(() => {
+    setData((prevData) => [...prevData].sort(() => Math.random() - 0.5));
+    getScores();
+  }, []);
 
   useEffect(() => {
     if (value.first != value.second) {
@@ -64,7 +73,7 @@ function App() {
           )
         );
         setToggle((prev) => !prev);
-      }, 1000);
+      }, 400);
     } else {
       setData((prevData) =>
         prevData.map((ele) =>
@@ -79,17 +88,49 @@ function App() {
     setValue((prev) => {
       return { first: undefined, second: undefined };
     });
+    setGameOver(data.every((ele) => ele.done === true));
   }, [toggle]);
+
+  useEffect(() => {
+    if (gameOver) {
+      if (highscore?.score > moves) {
+        showup(true);
+      }
+    }
+  }, [gameOver]);
+
+  async function getScores() {
+    let data = await axios.get(
+      "https://resturant-backend-34sx.onrender.com/resturant/v1/booking/getscore"
+    );
+    setHighestScore(data.data.data[0]);
+  }
 
   return (
     <div className="border h-screen w-full">
       <div className="border  w-full h-10 flex items-center justify-between p-3">
         <span className="font-bold">
-          <b>M</b>emory game
+          <b className="text-yellow-700 text-2xl">M</b>emory game
         </span>{" "}
-        <span>Moves {moves}</span>
+        <span className="flex justify-center items-center gap-1">
+          <IoMoveSharp />
+          Moves {moves}
+        </span>
       </div>
-      <div className="border grid md:grid-cols-6 grid-cols-4 m-auto md:grid-rows-6 grid-rows-10 gap-2 p-3 md:w-[70%]  h-screen">
+      <div className="  w-full h-10 gap-5 flex items-center p-3">
+        <span className="font-bold">
+          <b>H</b>ighest Score
+        </span>
+        <span className="flex justify-center items-center gap-1">
+          <CgProfile />
+          <span className="font-semibold">{highscore?.firstName}</span>
+        </span>
+        <span className="flex justify-center items-center gap-1">
+          <IoMoveSharp />
+          {highscore?.score} Moves
+        </span>
+      </div>
+      <div className=" grid md:grid-cols-6 grid-cols-4 m-auto md:grid-rows-6 grid-rows-10 gap-2 p-3 md:w-[70%]  h-screen">
         {data.map((ele) => {
           return (
             <Cards
@@ -102,6 +143,13 @@ function App() {
           );
         })}
       </div>
+      {popup && (
+        <Popup
+          showup={showup}
+          oldFirstName={highscore?.firstName}
+          score={moves}
+        />
+      )}
     </div>
   );
 }
