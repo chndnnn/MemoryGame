@@ -73,7 +73,7 @@ function App() {
           )
         );
         setToggle((prev) => !prev);
-      }, 400);
+      }, 800);
     } else {
       setData((prevData) =>
         prevData.map((ele) =>
