@@ -21,7 +21,6 @@ const Popup = ({ showup, score, oldFirstName }) => {
   function onConfirm() {
     if (name) {
       updateScore();
-      window.location.reload();
     }
   }
 
