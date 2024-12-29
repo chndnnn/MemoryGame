@@ -17,6 +17,8 @@ import axios from "axios";
 import Popup from "./Components/Popup";
 import { CgProfile } from "react-icons/cg";
 import { IoMoveSharp } from "react-icons/io5";
+import { MdDarkMode } from "react-icons/md";
+import { IoIosSunny } from "react-icons/io";
 
 function App() {
   let [data, setData] = useState([
@@ -49,7 +51,7 @@ function App() {
     { index: 27, value: 22, show: false, done: false, image: dragon },
     { index: 28, value: 22, show: false, done: false, image: dragon },
   ]);
-
+  let [darkmode, setDarkmode] = useState(false);
   let [moves, setMoves] = useState(0);
   let [value, setValue] = useState({ first: undefined, second: undefined });
   let [gameOver, setGameOver] = useState(false);
@@ -107,11 +109,23 @@ function App() {
   }
 
   return (
-    <div className="border h-screen w-full">
+    <div
+      className={`border h-screen w-full ${darkmode && "bg-black text-white"}`}
+    >
       <div className="border  w-full h-10 flex items-center justify-between p-3">
-        <span className="font-bold">
-          <b className="text-yellow-700 text-2xl">M</b>emory game
-        </span>{" "}
+        <span className="font-bold flex  items-center gap-2">
+          <span>
+            <b className="text-yellow-700 text-2xl">M</b>emory game
+          </span>
+
+          <span className="mt-2 cursor-pointer">
+            {!darkmode ? (
+              <MdDarkMode onClick={() => setDarkmode(true)} />
+            ) : (
+              <IoIosSunny onClick={() => setDarkmode(false)} />
+            )}
+          </span>
+        </span>
         <span className="flex justify-center items-center gap-1">
           <IoMoveSharp />
           Moves {moves}
