@@ -118,7 +118,7 @@ function App() {
             <b className="text-yellow-700 text-2xl">M</b>emory game
           </span>
 
-          <span className="mt-2 cursor-pointer">
+          <span className="mt-2 cursor-pointer text-2xl">
             {!darkmode ? (
               <MdDarkMode onClick={() => setDarkmode(true)} />
             ) : (
